@@ -75,7 +75,8 @@ public class BaseFormConverter {
 			this.isdir = false;
 		}
 		Properties props = new Properties();
-		props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
+		props.setProperty("annotators", "tokenize, ssplit, pos, lemma");
+		//props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
 		pipeline = new StanfordCoreNLP(props);
 	}
 	
@@ -99,6 +100,7 @@ public class BaseFormConverter {
 			File inputdir = new File(this.inputf);
 			File[] directoryListing = inputdir.listFiles();
 			for (File child : directoryListing) {
+				System.out.println("processing file "+child.getName());
 				try {
 					outputfile = new File(outputf, child.getName());
 					writer = new BufferedWriter(new FileWriter(outputfile));
@@ -108,10 +110,15 @@ public class BaseFormConverter {
 						outputSentencesInBasicForm(sentences, writer);
 						writer.newLine();
 					}
-					writer.close();
-					reader.close();
 				} catch (IOException e) {
 					e.printStackTrace(err);
+				} finally {
+					try {
+						if(writer != null) writer.close();
+						if(writer != null) reader.close();
+					} catch(IOException e) {
+						e.printStackTrace(err);
+					}
 				}
 			}
 		}
@@ -124,10 +131,15 @@ public class BaseFormConverter {
 					outputSentencesInBasicForm(sentences, writer);
 					writer.newLine();
 				}
-				writer.close();
-				reader.close();
 			} catch (IOException e) {
 				e.printStackTrace(err);
+			} finally {
+				try {
+					if(writer != null) writer.close();
+					if(writer != null) reader.close();
+				} catch(IOException e) {
+					e.printStackTrace(err);
+				}
 			}
 		}
 	}
