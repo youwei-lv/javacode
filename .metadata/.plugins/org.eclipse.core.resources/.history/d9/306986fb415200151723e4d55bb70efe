@@ -1,0 +1,37 @@
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * A TokenCounter object counts the times of different tokens in files.
+ * 
+ * @author Youwei Lu
+ */
+public class TokenCounter {
+
+	/**
+	 * Specified counting target, which may be a file name or a directory.
+	 * When it is a single file, the tokens in the file will be counted; however, when
+	 * is a directory, tokens in all files in the directory will be counted.
+	 */
+	String inputf;
+	/**
+	 * The name of file to which the counting result will be written.
+	 */
+	String countf;
+	/**
+	 * Map between tokens and their frequencies
+	 */
+	private Map<String, Integer> count;
+	
+	public TokenCounter(String inputf, String countf) {
+		this.inputf = inputf;
+		this.countf = countf;
+		count = new HashMap<String, Integer>();
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

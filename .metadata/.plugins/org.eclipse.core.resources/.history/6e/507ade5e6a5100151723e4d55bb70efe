@@ -1,0 +1,22 @@
+import java.io.File;
+
+public class BaseFormConverter {
+	String inputf;
+	String outputf;
+	boolean isdir;
+	
+	public BaseFormConverter(String inputf, String outputf) {
+		this.inputf = inputf;
+		this.outputf = outputf;
+		if(new File(inputf).isDirectory())
+			this.isdir = true;
+		else
+			this.isdir = false;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		File f = new File();
+	}
+
+}

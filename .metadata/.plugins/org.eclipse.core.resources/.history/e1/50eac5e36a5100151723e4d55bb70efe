@@ -1,0 +1,48 @@
+import java.io.File;
+
+public class BaseFormConverter {
+	String inputf;
+	String outputf;
+	boolean isdir;
+	
+	public BaseFormConverter(String inputf, String outputf) {
+		this.inputf = inputf;
+		this.outputf = outputf;
+		if(new File(inputf).isDirectory()){
+			this.isdir = true;
+			File outputdir = new File(outputf);
+			if(outputdir.exists() && outputdir.isFile()) {
+				throw new RuntimeException("The output directory cannot be created");
+			}
+		}
+		else {
+			this.isdir = false;
+		}
+	}
+	
+	public void baseFormConverting() {
+		if(isdir) {
+			File dir = new File(this.inputf);
+			File[] directoryListing = dir.listFiles();
+			if (directoryListing != null) {
+				for (File child : directoryListing) {
+					// Do something with child
+				}
+			} else {
+				// Handle the case where dir is not really a directory.
+				// Checking dir.isDirectory() above would not be sufficient
+				// to avoid race conditions with another process that deletes
+				// directories.
+			}
+		}
+		else {
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		File f = new File();
+	}
+
+}
