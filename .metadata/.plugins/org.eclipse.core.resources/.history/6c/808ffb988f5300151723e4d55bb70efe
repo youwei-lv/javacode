@@ -114,16 +114,17 @@ public class TokenIdConverter {
 							}
 						}
 						if (j < tokens.length) {
-							if (prevId >= 0) {
+							if (prevId > 0) {
 								write.write("| " + id + "("+tokens[j]+")" +" ");
 							} else {
 								write.write(id + "("+tokens[j]+")"+" ");
 							}
 						}
-						else if( prevId >= 0 && j==tokens.length) {
+						else if( prevId > 0 && j==tokens.length) {
 							write.write("| ");
 						}
 						i = j;
+						
 					} else if (tokenIdMap.containsKey(token)) {
 						prevId = id;
 						id = tokenIdMap.get(token);
@@ -146,7 +147,7 @@ public class TokenIdConverter {
 		// TODO Auto-generated method stub
 		TokenIdConverter convert = new TokenIdConverter("token_freq", "\\.|,|\\n|:|\\?|!");
 		convert.loadTokenList();
-		convert.convertTokenFile(new File("12206.txt"), new File("12206.txt.ids"));
+		convert.convertTokenFile(new File("test"), new File("12206.txt.ids"));
 	}
 
 }

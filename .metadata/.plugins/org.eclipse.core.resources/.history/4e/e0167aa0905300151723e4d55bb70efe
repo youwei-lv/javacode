@@ -124,6 +124,7 @@ public class TokenIdConverter {
 							write.write("| ");
 						}
 						i = j;
+						
 					} else if (tokenIdMap.containsKey(token)) {
 						prevId = id;
 						id = tokenIdMap.get(token);

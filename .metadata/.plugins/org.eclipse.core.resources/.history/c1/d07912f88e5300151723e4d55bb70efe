@@ -114,22 +114,22 @@ public class TokenIdConverter {
 							}
 						}
 						if (j < tokens.length) {
-							if (prevId >= 0) {
+							if (prevId > 0) {
 								write.write("| " + id + "("+tokens[j]+")" +" ");
 							} else {
 								write.write(id + "("+tokens[j]+")"+" ");
 							}
 						}
-						else if( prevId >= 0 && j==tokens.length) {
+						else if( prevId > 0 && j==tokens.length) {
 							write.write("| ");
 						}
 						i = j;
+						
 					} else if (tokenIdMap.containsKey(token)) {
 						prevId = id;
 						id = tokenIdMap.get(token);
 						write.write(id +"("+token+")"+ " ");
 					} else {
-						prevId = id;
 						id = -1;
 					}
 				}
