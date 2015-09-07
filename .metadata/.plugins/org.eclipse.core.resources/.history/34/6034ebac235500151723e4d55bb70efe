@@ -1,0 +1,52 @@
+package util;
+
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.Properties;
+
+/**
+ * SProperties is derived from java.io.Properties, with the extension that it
+ * defines the method of loading properties from a String array, which might
+ * come from the arguments passed to the main function.
+ * 
+ * @author Youwei Lu
+ */
+public class SProperties extends Properties {
+
+	private static final long serialVersionUID = 6957966910702529508L;
+
+	/**
+	 * Loads properties from a String array, which can be the arguments passed
+	 * to the main function, as an additional member of the methods of loading
+	 * properties from different sources defined in the superclass.
+	 */
+	public void load(String[] args) {
+		loadFromStringArray(args, "(^-)|(\\s+-)");
+	}
+
+	public void load(String[] args, String optionNameIndicator) {
+		loadFromStringArray(args, optionNameIndicator);
+	}
+
+	static public void main(String[] args) {
+		SProperties props = new SProperties();
+		props.load(args);
+		props.list(System.out);
+		System.out.flush();
+	}
+
+	private void loadFromStringArray(String[] args, String optionNameIndicatorPattern) {
+		StringBuilder sb = new StringBuilder();
+		for (String arg : args) {
+			sb.append(arg).append("\n");
+		}
+		String commandlineProperties = sb.toString().replaceAll(optionNameIndicatorPattern, " ");
+		StringReader read = new StringReader(commandlineProperties);
+		try {
+			this.load(read);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		read.close();
+	}
+}

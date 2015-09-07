@@ -7,5 +7,6 @@
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="eng.TokenIdConverter"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-input=test_output -output=test_output_ids -printword=false -tokenlist=token_freq&#10;-printword=false"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="NLP"/>
 </launchConfiguration>

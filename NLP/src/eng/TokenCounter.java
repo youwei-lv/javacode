@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import util.SProperties;
+
 /**
  * A TokenCounter object counts the appearance times of different tokens in
  * files; however, there are two regular expressions for token selection, one
@@ -21,6 +23,17 @@ import java.util.regex.Pattern;
  * tokens are those that conform to the {@linkplain #countPattern collecting
  * regular expression} and that do not match the {@linkplain #ignorePattern
  * scraping one}.
+ * 
+ * TokenCounter can be executed from command line with options to specify the
+ * target files whose tokens are counted, and output the frequency of tokens to
+ * a file. Use the following options:
+ * 
+ * <ul>
+ * <li>-input: input file or directory</li>
+ * <li>-output: the output file recording the counting results</li>
+ * <li>-countpattern: the regular expression for tokens to be collected for counting</li>
+ * <li>-ignorepattern: the regular expression for keeping tokens from being counted</li>
+ * </ul>
  * 
  * @author Youwei Lu
  */
@@ -74,6 +87,11 @@ public class TokenCounter {
 	 * Increase the frequency of a specific token by one, if the token matches
 	 * the collecting regular expression and does not match the scraping regular
 	 * expression.
+	 * 
+	 * @param token
+	 *            the token to be added; if it is a token that only matches the
+	 *            collecting pattern, then its frequency will be increased by
+	 *            one.
 	 */
 	public void addToken(String token) {
 		if (Pattern.matches(this.ignorePattern, token) == false && Pattern.matches(this.countPattern, token) == true) {
@@ -192,20 +210,22 @@ public class TokenCounter {
 	public static void main(String[] args) throws IOException {
 		String input, output, countPattern, ignorePattern;
 		TokenCounter counter;
-		if ((input = System.getProperty("input")) == null) {
+		SProperties props = new SProperties();
+		props.load(args);
+		if ((input = props.getProperty("input")) == null) {
 			throw new RuntimeException("Use -Dinput=<file name> option to specify the input file/directory.");
 		}
-		if ((output = System.getProperty("output")) == null) {
+		if ((output = props.getProperty("output")) == null) {
 			throw new RuntimeException("Use -Doutput=<file name> option to specify the output file.");
 		}
 
 		counter = new TokenCounter(input, output);
 
-		if ((countPattern = System.getProperty("countpattern")) != null) {
+		if ((countPattern = props.getProperty("countpattern")) != null) {
 			counter.setCountPattern(countPattern);
 		}
 
-		if ((ignorePattern = System.getProperty("ignorepattern")) != null) {
+		if ((ignorePattern = props.getProperty("ignorepattern")) != null) {
 			counter.setIgnorePattern(ignorePattern);
 		}
 
