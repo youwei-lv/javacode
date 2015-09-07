@@ -18,7 +18,6 @@ import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
-import util.SProperties;
 
 /**
  * An object of BaseFormConverter convert English texts to texts of words in the base form by using
@@ -176,17 +175,14 @@ public class BaseFormConverter {
 	}
 
 	public static void main(String[] args) {
-		SProperties props = new SProperties();
-		props.load(args);
-		
+		// TODO Auto-generated method stub
 		String input, output;
-		if((input=props.getProperty("input"))==null) {
-			throw new RuntimeException("Use -input=<filename> option to specify the input file/directory.");
+		if((input=System.getProperty("input"))==null) {
+			throw new RuntimeException("Use -Dinput=<filename> option to specify the input file/directory.");
 		}
-		if((output=props.getProperty("output"))==null) {
-			throw new RuntimeException("Use -output=<filename> option to specify the output file.");
+		if((output=System.getProperty("output"))==null) {
+			throw new RuntimeException("Use -Doutput=<filename> option to specify the output file.");
 		}
-		
 		BaseFormConverter converter = new BaseFormConverter(input, output);
 		converter.doconvert();
 	}
