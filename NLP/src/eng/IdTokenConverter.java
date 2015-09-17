@@ -143,17 +143,11 @@ public class IdTokenConverter {
 
 	public static void main(String[] args) throws IOException {
 		SProperties props = new SProperties();
+		String tokenListFile, delimiter, lineStringPattern, inputf, outputf;
+		int column, groupOfTokenId;
+		boolean dispWhitespace;
+
 		props.load(args);
-
-		String tokenListFile = "/home/youwei/Github/npbayes-hsmm/unif-thsmm-unit_pure_C/dict.txt";
-		String delimiter = "\\s+";
-		int column = 0;
-		String lineStringPattern = "(.+):(.+)";
-		int groupOfTokenId = 2;
-		String inputf = "/home/youwei/Github/npbayes-hsmm/unif-thsmm-unit_pure_C/wt/0.1";
-		String outputf = "/home/youwei/iiiiiii";
-		boolean dispWhitespace = false;
-
 		tokenListFile = props.getProperty("tokenlist.file");
 		delimiter = props.getProperty("tokenlist.delimiter");
 		column = Integer.valueOf(props.getProperty("tokenlist.column"));
