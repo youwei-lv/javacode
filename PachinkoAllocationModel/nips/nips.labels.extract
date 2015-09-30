@@ -1,0 +1,52 @@
+Learning and Generalisation = 0
+Applications = 1
+Neurobiology = 2
+Structured Networks = 3
+Implementation = 4
+Neuroscience = 5
+Speech and Signal Processing = 6 => 47
+Vision = 7
+Optimisation and Control = 8
+Other Applications => 1
+New Learning Algorithms = 9
+Empirical Analyses = 10
+Theoretical Analyses = 11
+Hardware Implementation = 12
+History of Neural Networks = 13
+Neuro-Dynamics = 14
+Oscillations = 15
+Temporal Reasoning = 16
+Speech = 17 => 47
+Signal Processing = 18 => 47
+Visual Processing = 19 => 7
+Control and Navigation = 20 => 32
+Language and Cognition = 21
+Local Basis Functions = 22
+Learning Systems = 23 => 0
+Performance Comparisons = 24 => 10
+VLSI = 25 => 12
+Language = 26 => 21
+Temporal Sequences = 27 => 16
+Recurrent Networks = 28
+Optical Character Recognition = 29
+Control and Planning = 30 => 32
+Architectures and Algorithms = 31
+Control, Navigation and Planning = 32
+Stochastic Learning and Analysis = 33
+Network Dynamics and Chaos = 34
+Theory and Analysis = 35 => 11
+Cognitive Science = 36
+Computational and Theoretical Neurobiology = 37 => 3
+Learning Algorithms = 38 => 9
+Learning Theory, Generalisation and Complexity = 39
+Theoretical Analysis: Dynamics and Statistics = 40 => 11
+Learning Theory and Dynamics = 42
+Reinforcement Learning = 43
+Algorithms and Architectures = 44 => 31
+Theory = 45 => 11
+Control = 46
+Speech, Handwriting and Signal Processing = 47
+Uncategorised = 50
+
+
+
