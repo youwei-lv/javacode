@@ -14,11 +14,11 @@ import util.SProperties;
 
 /**
  * A TokenIdConverter convert the tokens in a single file or the files in a
- * directory to their ids which are separated by a delimiter "|" which stand for
+ * directory to their ids which are separated by a delimiter "|" which stands for
  * the separators in the original text, e.g. commas, newline characters etc., to
- * identify segments in the resulted id sequence; the id of a token is the line
- * number whose line begins with the token in the token list file, with the line
- * number counted from zero.
+ * identify segments in the resulted id sequence; the id of a token is its line
+ * number (indexing from zero) in the token list file where each line begins with
+ * a token.
  * <p>
  * 
  * Because some words in the files can be missing from the token list,
@@ -125,7 +125,9 @@ public class TokenIdConverter {
 			write = new BufferedWriter(new FileWriter(outfile));
 
 			while ((line = read.readLine()) != null) {
-				tokens = line.split("\\s+");
+				// readLine() removes the ending newline character, so append it manually
+				line = line + "\n";
+				tokens = line.split("( |\\t|\\r)+");
 				for (i = 0; i < tokens.length; i++) {
 					token = tokens[i];
 					j = i + 1;
